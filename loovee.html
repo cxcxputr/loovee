@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>untuk cacaaa</title>
+    <style>
+        /* Body styling */
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom right, #ffcccc, #ff99cc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Envelope container styling */
+        .envelope-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        /* Envelope body */
+        .envelope-body {
+            width: 100%;
+            height: 100%;
+            background: #b30047;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            z-index: -1;
+        }
+
+        /* Envelope flap */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            background: #cc3366;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transition: transform 0.6s ease;
+            transform-origin: top center;
+            z-index: 2;
+        }
+
+        /* Heart icon in the middle of the envelope */
+        .envelope-body::before {
+            content: "♥";
+            font-size: 5em;
+            color: white;
+        }
+
+        /* Letter container (hidden initially) */
+        .letter-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            display: none;
+        }
+
+        /* Image styling */
+        .photo img {
+            width: 200px;
+            height: 250px;
+            border-radius: 40%;
+            margin-bottom: 20px;
+            border: 5px solid #f0a3c1;
+        }
+
+        /* Title styling */
+        .letter-title {
+            font-size: 2em;
+            color: #b30047;
+            margin-bottom: 20px;
+        }
+
+        /* Text styling */
+        .letter-body {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Signature styling */
+        .signature {
+            font-size: 1.5em;
+            color: #b30047;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        /* Open state for envelope and letter */
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(-180deg);
+            opacity: 0;
+        }
+
+        .envelope-container.open .letter-container {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Envelope container -->
+    <div class="envelope-container" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+
+        <!-- Letter container (hidden inside envelope) -->
+        <div class="letter-container" id="letter">
+            <div class="photo">
+                <!-- Add your image path here -->
+                <img src="ror.jpeg" alt="Love Photo">
+            </div>
+            <h1 class="letter-title">sayangnyaa hazzeyy</h1>
+            <p class="letter-body">
+                from the moment i met you, my world changed. you filled my life with colors i never knew existed.
+                every day with you is like a new adventure, full of laughter, joy, and boundless love.
+                i am endlessly grateful for every moment we share and every memory we create together.
+            </p>
+            <p class="letter-body">
+                i promise to cherish you, to stand by your side, and to love you with all my heart, forever and always.
+                sorry for everything.
+            </p>
+            <p class="signature">yours forever</p>
+            <p class="signature">hazzeyy</p>
+        </div>
+    </div>
+
+    <!-- Romantic sound -->
+    <audio id="romanticSound">
+        <source src="romantic-sound.mpeg" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // JavaScript to toggle the envelope open, reveal the letter, and play sound
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const romanticSound = document.getElementById('romanticSound');
+        
+        envelope.addEventListener('click', () => {
+            envelope.classList.add('open'); // Animate the envelope to "open"
+            letter.classList.add('open');   // Display the letter with fade-in effect
+            romanticSound.play();           // Play the romantic sound
+        });
+    </script>
+</body>
+</html>
